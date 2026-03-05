@@ -4,10 +4,6 @@
     {
       "path": "/api/cron/daily",
       "schedule": "0 8 * * *"
-    },
-    {
-      "path": "/api/cron/matchday",
-      "schedule": "*/10 * * * *"
     }
   ]
 }
