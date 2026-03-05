@@ -1,6 +1,6 @@
-﻿# Juve Tracker
+# Juve Tracker
 
-Web app Next.js + TypeScript + Tailwind per monitorare Juventus: rosa, partite (live/passate/prossime), notifiche push e news RSS.
+Web app Next.js + TypeScript + Tailwind per monitorare Juventus: rosa, partite (live/passate/prossime), dettaglio match con eventi (gol/cartellini), notifiche push e news RSS.
 
 ## Stack
 - Next.js App Router
@@ -72,6 +72,7 @@ npx web-push generate-vapid-keys
 Con `USE_MOCK_DATA=true` i dati arrivano da:
 - `mocks/players.json`
 - `mocks/matches.json`
+- `mocks/matchDetails.json`
 
 ## Deploy Vercel
 1. Push repo su GitHub.

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 
@@ -67,22 +67,13 @@ export function NotificationSettings() {
     <div className="card space-y-3">
       <p>Permesso notifiche: <strong>{permission}</strong></p>
       <div className="flex gap-2">
-        <button
-          className="rounded-xl bg-juventus-black px-4 py-2 text-white disabled:opacity-50"
-          onClick={subscribe}
-          disabled={busy}
-        >
+        <button className="pill pill-active disabled:opacity-50" onClick={subscribe} disabled={busy}>
           Attiva notifiche
         </button>
-        <button
-          className="rounded-xl border border-black/20 px-4 py-2 disabled:opacity-50"
-          onClick={unsubscribe}
-          disabled={busy}
-        >
+        <button className="pill disabled:opacity-50" onClick={unsubscribe} disabled={busy}>
           Disattiva
         </button>
       </div>
     </div>
   );
 }
-

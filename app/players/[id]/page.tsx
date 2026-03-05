@@ -1,4 +1,4 @@
-﻿import { notFound } from "next/navigation";
+import { notFound } from "next/navigation";
 import { getSquadCached } from "@/lib/repository";
 import { statsProvider } from "@/lib/providers/statsProvider";
 
@@ -14,8 +14,8 @@ export default async function PlayerDetailPage({ params }: { params: Promise<{ i
   const stats = await statsProvider.getPlayerStats(player.provider_id);
 
   return (
-    <div className="space-y-4">
-      <h1 className="text-2xl font-bold">{player.name}</h1>
+    <div className="space-y-4 pt-6">
+      <h1 className="text-5xl leading-none">{player.name}</h1>
 
       <section className="card grid gap-2 text-sm sm:grid-cols-2">
         <p>Ruolo: {player.position ?? "n/d"}</p>
@@ -27,13 +27,12 @@ export default async function PlayerDetailPage({ params }: { params: Promise<{ i
       </section>
 
       <section className="card">
-        <h2 className="text-lg font-semibold">Statistiche</h2>
+        <h2 className="text-4xl leading-none">Statistiche</h2>
         <p className="mt-2">Presenze: {stats.appearances ?? "non disponibile con questo provider"}</p>
         <p>Gol: {stats.goals ?? "non disponibile con questo provider"}</p>
         <p>Assist: {stats.assists ?? "non disponibile con questo provider"}</p>
-        {stats.note ? <p className="mt-2 text-sm text-black/70">{stats.note}</p> : null}
+        {stats.note ? <p className="mt-2 text-sm muted">{stats.note}</p> : null}
       </section>
     </div>
   );
 }
-

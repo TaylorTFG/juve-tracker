@@ -1,4 +1,4 @@
-﻿import { env } from "@/lib/env";
+import { env } from "@/lib/env";
 import { logApi } from "@/lib/logger";
 
 function wait(ms: number) {
@@ -64,7 +64,10 @@ export async function fetchMatches(teamId: number, from: string, to: string) {
   return fdGet(`/teams/${teamId}/matches`, { dateFrom: from, dateTo: to });
 }
 
+export async function fetchMatchById(matchId: number) {
+  return fdGet(`/matches/${matchId}`);
+}
+
 export async function fetchTodayMatches() {
   return fdGet("/matches");
 }
-

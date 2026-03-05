@@ -1,0 +1,22 @@
+{
+  "9001": {
+    "provider_id": 9001,
+    "utc_date": "2026-03-01T19:45:00Z",
+    "local_date_rome": "2026-03-01T20:45:00+01:00",
+    "status": "FINISHED",
+    "competition": "Serie A",
+    "home_team": "Juventus",
+    "away_team": "Atalanta",
+    "home_score": 2,
+    "away_score": 1,
+    "goals": [
+      { "minute": 22, "team": "Juventus", "scorer": "D. Vlahovic", "type": "REGULAR", "score": "1-0" },
+      { "minute": 61, "team": "Atalanta", "scorer": "A. Lookman", "type": "REGULAR", "score": "1-1" },
+      { "minute": 83, "team": "Juventus", "scorer": "F. Chiesa", "type": "REGULAR", "score": "2-1" }
+    ],
+    "bookings": [
+      { "minute": 35, "team": "Juventus", "player": "Locatelli", "card": "YELLOW" },
+      { "minute": 77, "team": "Atalanta", "player": "Djimsiti", "card": "YELLOW" }
+    ]
+  }
+}

@@ -1,17 +1,149 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg: #08090b;
+  --bg-soft: #111319;
+  --surface: #101216;
+  --surface-soft: #171a20;
+  --line: rgba(255, 255, 255, 0.1);
+  --text: #f3f4f6;
+  --muted: #9aa3b2;
+  --accent: #f6c90e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background: linear-gradient(180deg, #f2f2f2 0%, #ffffff 100%);
-  color: #111111;
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body), sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1400px 500px at 10% -10%, #232734 0%, transparent 60%),
+    radial-gradient(1000px 450px at 100% 0%, #1a1d24 0%, transparent 55%),
+    var(--bg);
+}
+
+h1,
+h2,
+h3,
+.brand-title {
+  font-family: var(--font-heading), sans-serif;
+  letter-spacing: 0.02em;
 }
 
 .container-main {
-  @apply mx-auto max-w-5xl px-4 py-6;
+  @apply mx-auto w-full max-w-6xl px-4;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+  background: rgba(8, 9, 11, 0.75);
+}
+
+.brand-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.brand-badge {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.7rem;
+  background: var(--accent);
+  color: #111;
+  font-weight: 800;
+}
+
+.brand-title {
+  display: block;
+  font-size: 1.6rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.brand-sub {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+}
+
+.nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.55rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.nav-link:hover {
+  color: var(--text);
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.nav-link-active {
+  color: #111;
+  background: var(--accent);
 }
 
 .card {
-  @apply rounded-2xl border border-black/10 bg-white p-4 shadow-sm;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+  padding: 1rem;
 }
 
+.hero-card {
+  border: 1px solid rgba(246, 201, 14, 0.45);
+  background: linear-gradient(135deg, #111319 0%, #181b23 55%, #0f1116 100%);
+}
+
+.pill {
+  border: 1px solid var(--line);
+  color: var(--muted);
+  background: #171a20;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pill-active {
+  color: #111;
+  border-color: #ffe06f;
+  background: var(--accent);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.match-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.match-link:hover .card {
+  border-color: rgba(246, 201, 14, 0.65);
+  transform: translateY(-1px);
+  transition: 160ms ease;
+}

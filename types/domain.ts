@@ -1,4 +1,4 @@
-﻿export type PlayerRow = {
+export type PlayerRow = {
   id: number;
   provider_id: number;
   name: string;
@@ -25,6 +25,36 @@ export type MatchRow = {
   updated_at: string;
 };
 
+export type MatchGoalEvent = {
+  minute: number | null;
+  team: string;
+  scorer: string;
+  type: string | null;
+  score: string | null;
+};
+
+export type MatchBookingEvent = {
+  minute: number | null;
+  team: string;
+  player: string;
+  card: string | null;
+};
+
+export type MatchDetail = {
+  provider_id: number;
+  utc_date: string;
+  local_date_rome: string;
+  status: string;
+  competition: string | null;
+  home_team: string;
+  away_team: string;
+  home_score: number | null;
+  away_score: number | null;
+  goals: MatchGoalEvent[];
+  bookings: MatchBookingEvent[];
+  providerMessage?: string;
+};
+
 export type CacheMeta = {
   key: string;
   updated_at: string;
@@ -46,4 +76,3 @@ export type PlayerStats = {
   provider: string;
   note?: string;
 };
-
