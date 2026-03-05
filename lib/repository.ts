@@ -70,7 +70,7 @@ export async function getSquadCached(forceRefresh = false): Promise<PlayerRow[]>
   }
 
   const team = await fetchSquad(env.JUVE_TEAM_ID);
-  const rows = (team.squad ?? []).map(mapPlayer);
+  const rows: Array<Omit<PlayerRow, "id" | "updated_at">> = (team.squad ?? []).map(mapPlayer);
 
   if (supabase && rows.length) {
     await supabase.from("players").upsert(rows, { onConflict: "provider_id" });
@@ -79,7 +79,7 @@ export async function getSquadCached(forceRefresh = false): Promise<PlayerRow[]>
 
   return supabase
     ? ((await supabase.from("players").select("*").order("name", { ascending: true })).data as PlayerRow[])
-    : rows.map((r, i) => ({ ...r, id: i + 1, updated_at: new Date().toISOString() }));
+    : rows.map((r: Omit<PlayerRow, "id" | "updated_at">, i: number) => ({ ...r, id: i + 1, updated_at: new Date().toISOString() }));
 }
 
 export async function getMatchesCached(from: string, to: string, forceRefresh = false): Promise<MatchRow[]> {
@@ -101,7 +101,7 @@ export async function getMatchesCached(from: string, to: string, forceRefresh = 
   }
 
   const payload = await fetchMatches(env.JUVE_TEAM_ID, from, to);
-  const rows = (payload.matches ?? []).map(mapMatch);
+  const rows: Array<Omit<MatchRow, "id" | "updated_at">> = (payload.matches ?? []).map(mapMatch);
 
   if (supabase && rows.length) {
     await supabase.from("matches").upsert(rows, { onConflict: "provider_id" });
@@ -118,7 +118,7 @@ export async function getMatchesCached(from: string, to: string, forceRefresh = 
     return (data ?? []) as MatchRow[];
   }
 
-  return rows.map((r, i) => ({ ...r, id: i + 1, updated_at: new Date().toISOString() }));
+  return rows.map((r: Omit<MatchRow, "id" | "updated_at">, i: number) => ({ ...r, id: i + 1, updated_at: new Date().toISOString() }));
 }
 
 export async function getLiveMatchesCached(): Promise<MatchRow[]> {
@@ -131,5 +131,5 @@ export async function getLiveMatchesCached(): Promise<MatchRow[]> {
   const toStr = to.toISOString().slice(0, 10);
 
   const matches = await getMatchesCached(fromStr, toStr, false);
-  return matches.filter((m) => ["IN_PLAY", "PAUSED", "LIVE"].includes(m.status));
+  return matches.filter((m: MatchRow) => ["IN_PLAY", "PAUSED", "LIVE"].includes(m.status));
 }
