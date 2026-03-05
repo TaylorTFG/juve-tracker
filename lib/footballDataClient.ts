@@ -7,7 +7,7 @@ function wait(ms: number) {
 
 export async function fdGet(path: string, params?: Record<string, string>) {
   if (!env.FOOTBALL_DATA_API_KEY) {
-    throw new Error("FOOTBALL_DATA_API_KEY missing");
+    throw new Error("FOOTBALL_DATA_API_KEY missing: configura la variabile su Vercel o abilita USE_MOCK_DATA=true.");
   }
 
   const url = new URL(`${env.FOOTBALL_DATA_BASE_URL}${path}`);
@@ -22,14 +22,18 @@ export async function fdGet(path: string, params?: Record<string, string>) {
     attempt += 1;
     const response = await fetch(url, {
       headers: {
-        "X-Auth-Token": env.FOOTBALL_DATA_API_KEY
+        "X-Auth-Token": env.FOOTBALL_DATA_API_KEY,
+        "X-Unfold-Goals": "true",
+        "X-Unfold-Bookings": "true",
+        "X-Unfold-Lineups": "false",
+        "X-Unfold-Subs": "false"
       },
       next: { revalidate: 0 }
     });
 
     const requestId = response.headers.get("x-request-id") ?? "n/a";
     const retryAfter = response.headers.get("retry-after");
-    const requestsAvailable = response.headers.get("x-requests-available-minute");
+    const requestsAvailable = response.headers.get("x-requests-available-minute") ?? response.headers.get("x-requestsavailable");
 
     logApi("football-data", {
       path,

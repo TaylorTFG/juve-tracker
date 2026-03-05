@@ -11,7 +11,10 @@ export default async function PlayerDetailPage({ params }: { params: Promise<{ i
     notFound();
   }
 
-  const stats = await statsProvider.getPlayerStats(player.provider_id);
+  const stats = await statsProvider.getPlayerStats({
+    providerPlayerId: player.provider_id,
+    playerName: player.name
+  });
 
   return (
     <div className="space-y-4 pt-6">
@@ -31,6 +34,7 @@ export default async function PlayerDetailPage({ params }: { params: Promise<{ i
         <p className="mt-2">Presenze: {stats.appearances ?? "non disponibile con questo provider"}</p>
         <p>Gol: {stats.goals ?? "non disponibile con questo provider"}</p>
         <p>Assist: {stats.assists ?? "non disponibile con questo provider"}</p>
+        <p className="mt-2 text-xs muted">Provider: {stats.provider}</p>
         {stats.note ? <p className="mt-2 text-sm muted">{stats.note}</p> : null}
       </section>
     </div>

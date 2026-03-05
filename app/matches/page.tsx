@@ -1,11 +1,13 @@
-import { addDays, subDays, format } from "date-fns";
+import { addDays, subDays } from "date-fns";
+import { formatInTimeZone } from "date-fns-tz";
 import { getMatchesCached } from "@/lib/repository";
 import { MatchesListClient } from "@/components/MatchesListClient";
+import { TZ } from "@/lib/time";
 
 export default async function MatchesPage() {
   const now = new Date();
-  const from = format(subDays(now, 30), "yyyy-MM-dd");
-  const to = format(addDays(now, 7), "yyyy-MM-dd");
+  const from = formatInTimeZone(subDays(now, 30), TZ, "yyyy-MM-dd");
+  const to = formatInTimeZone(addDays(now, 7), TZ, "yyyy-MM-dd");
   const matches = await getMatchesCached(from, to, false);
 
   return (
