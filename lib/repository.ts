@@ -1,4 +1,4 @@
-﻿import { readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { env } from "@/lib/env";
 import { fetchMatches, fetchSquad } from "@/lib/footballDataClient";
@@ -56,7 +56,7 @@ export async function touchCache(key: string, ttlSeconds: number): Promise<void>
   await supabase.from("cache_meta").upsert({ key, ttl_seconds: ttlSeconds, updated_at: new Date().toISOString() });
 }
 
-export async function getSquadCached(forceRefresh = false) {
+export async function getSquadCached(forceRefresh = false): Promise<PlayerRow[]> {
   if (env.USE_MOCK_DATA) {
     return loadMock<PlayerRow[]>("players.json");
   }
@@ -82,7 +82,7 @@ export async function getSquadCached(forceRefresh = false) {
     : rows.map((r, i) => ({ ...r, id: i + 1, updated_at: new Date().toISOString() }));
 }
 
-export async function getMatchesCached(from: string, to: string, forceRefresh = false) {
+export async function getMatchesCached(from: string, to: string, forceRefresh = false): Promise<MatchRow[]> {
   if (env.USE_MOCK_DATA) {
     return loadMock<MatchRow[]>("matches.json");
   }
@@ -121,7 +121,7 @@ export async function getMatchesCached(from: string, to: string, forceRefresh = 
   return rows.map((r, i) => ({ ...r, id: i + 1, updated_at: new Date().toISOString() }));
 }
 
-export async function getLiveMatchesCached() {
+export async function getLiveMatchesCached(): Promise<MatchRow[]> {
   const now = new Date();
   const from = new Date(now);
   from.setDate(from.getDate() - 1);
@@ -133,4 +133,3 @@ export async function getLiveMatchesCached() {
   const matches = await getMatchesCached(fromStr, toStr, false);
   return matches.filter((m) => ["IN_PLAY", "PAUSED", "LIVE"].includes(m.status));
 }
-
