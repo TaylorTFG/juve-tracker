@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { env } from "@/lib/env";
+import { findFixtureIdByMatch, getFixtureEvents } from "@/lib/apiFootballClient";
 import { fetchMatchById } from "@/lib/footballDataClient";
 import { toRomeIso } from "@/lib/time";
 import type { MatchDetail, MatchBookingEvent, MatchGoalEvent } from "@/types/domain";
@@ -75,6 +76,42 @@ function mapBooking(item: unknown): MatchBookingEvent {
   };
 }
 
+async function enrichWithApiFootball(detail: MatchDetail): Promise<MatchDetail> {
+  if (!env.API_FOOTBALL_KEY) {
+    return detail;
+  }
+
+  try {
+    const fixtureId = await findFixtureIdByMatch({
+      utcDate: detail.utc_date,
+      homeTeam: detail.home_team,
+      awayTeam: detail.away_team
+    });
+
+    if (!fixtureId) return detail;
+
+    const events = await getFixtureEvents(fixtureId);
+    const goals = events
+      .filter((e) => e.type.toLowerCase().includes("goal"))
+      .map((e) => ({ minute: e.minute, team: e.team, scorer: e.player, type: e.detail || "REGULAR", score: null }));
+    const bookings = events
+      .filter((e) => e.type.toLowerCase().includes("card") || e.detail.toLowerCase().includes("card"))
+      .map((e) => ({ minute: e.minute, team: e.team, player: e.player, card: e.detail || null }));
+
+    return {
+      ...detail,
+      goals: detail.goals.length ? detail.goals : goals,
+      bookings: detail.bookings.length ? detail.bookings : bookings,
+      providerMessage:
+        detail.goals.length || detail.bookings.length || goals.length || bookings.length
+          ? undefined
+          : "Nessun evento trovato anche sul provider esterno"
+    };
+  } catch {
+    return detail;
+  }
+}
+
 export async function getMatchDetail(matchId: number): Promise<MatchDetail> {
   if (env.USE_MOCK_DATA) {
     return readMockDetail(matchId);
@@ -88,7 +125,7 @@ export async function getMatchDetail(matchId: number): Promise<MatchDetail> {
   const goalsRaw = Array.isArray(match.goals) ? match.goals : [];
   const bookingsRaw = Array.isArray(match.bookings) ? match.bookings : [];
 
-  const detail: MatchDetail = {
+  let detail: MatchDetail = {
     provider_id: readNumber(match, "id") ?? matchId,
     utc_date: utcDate,
     local_date_rome: toRomeIso(utcDate),
@@ -103,7 +140,11 @@ export async function getMatchDetail(matchId: number): Promise<MatchDetail> {
   };
 
   if (detail.goals.length === 0 && detail.bookings.length === 0) {
-    detail.providerMessage = "Il provider non espone eventi dettagliati per questa partita o per il tuo piano API.";
+    detail = await enrichWithApiFootball(detail);
+  }
+
+  if (detail.goals.length === 0 && detail.bookings.length === 0) {
+    detail.providerMessage = "Nessun evento disponibile: il provider principale/esterno non lo espone per questo match.";
   }
 
   return detail;

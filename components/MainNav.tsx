@@ -7,6 +7,7 @@ const items = [
   { href: "/", label: "Dashboard" },
   { href: "/squad", label: "Rosa" },
   { href: "/matches", label: "Partite" },
+  { href: "/standings", label: "Classifica" },
   { href: "/news", label: "News" },
   { href: "/settings/notifications", label: "Notifiche" }
 ];

@@ -1,14 +1,25 @@
+import Link from "next/link";
 import { getHomeData } from "@/lib/serverData";
+import { getSerieAStandings } from "@/lib/standings";
 import { MatchCard } from "@/components/MatchCard";
+import { StandingsTable } from "@/components/StandingsTable";
 
 export default async function HomePage() {
-  const { nextMatch, liveMatches, lastResults } = await getHomeData();
+  const [{ nextMatch, liveMatches, lastResults }, standings] = await Promise.all([getHomeData(), getSerieAStandings()]);
 
   return (
     <div className="space-y-7 pt-6">
       <section className="card hero-card">
         <h1 className="text-5xl leading-none">Dashboard</h1>
-        <p className="mt-2 muted">Prossima partita, live score e risultati recenti della Juventus.</p>
+        <p className="mt-2 muted">Prossima partita, live score, classifica e risultati recenti della Juventus.</p>
+      </section>
+
+      <section>
+        <div className="mb-3 flex items-center justify-between">
+          <h2 className="text-4xl leading-none">Classifica Serie A</h2>
+          <Link href="/standings" className="pill">Apri completa</Link>
+        </div>
+        {standings.length ? <StandingsTable rows={standings} compact /> : <p className="card muted">Classifica non disponibile.</p>}
       </section>
 
       <section>

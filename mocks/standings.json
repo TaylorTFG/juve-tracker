@@ -1,0 +1,5 @@
+[
+  { "position": 1, "team": "Inter", "played": 27, "won": 20, "draw": 5, "lost": 2, "goalsFor": 60, "goalsAgainst": 20, "goalDifference": 40, "points": 65 },
+  { "position": 2, "team": "Juventus", "played": 27, "won": 18, "draw": 6, "lost": 3, "goalsFor": 49, "goalsAgainst": 21, "goalDifference": 28, "points": 60 },
+  { "position": 3, "team": "Milan", "played": 27, "won": 17, "draw": 5, "lost": 5, "goalsFor": 53, "goalsAgainst": 29, "goalDifference": 24, "points": 56 }
+]

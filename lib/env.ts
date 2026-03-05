@@ -17,6 +17,7 @@ const envSchema = z.object({
   API_FOOTBALL_BASE_URL: z.string().url().optional(),
   API_FOOTBALL_KEY: z.string().optional(),
   API_FOOTBALL_HOST: z.string().optional(),
+  API_FOOTBALL_TEAM_ID: z.coerce.number().optional(),
   API_FOOTBALL_LEAGUE_ID: z.coerce.number().optional(),
   API_FOOTBALL_SEASON: z.coerce.number().optional()
 });
