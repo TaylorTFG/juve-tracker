@@ -1,9 +1,9 @@
-﻿import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { env } from "@/lib/env";
 
-let cached: ReturnType<typeof createClient> | null = null;
+let cached: SupabaseClient<any, "public", any> | null = null;
 
-export function getSupabaseAdmin() {
+export function getSupabaseAdmin(): SupabaseClient<any, "public", any> | null {
   if (!env.NEXT_PUBLIC_SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) {
     return null;
   }
@@ -16,4 +16,3 @@ export function getSupabaseAdmin() {
 
   return cached;
 }
-
