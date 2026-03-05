@@ -1,4 +1,4 @@
-import { getHomeData } from "@/lib/serverData";
+﻿import { getHomeData } from "@/lib/serverData";
 import { MatchCard } from "@/components/MatchCard";
 
 export default async function HomePage() {
@@ -36,3 +36,4 @@ export default async function HomePage() {
     </div>
   );
 }
+

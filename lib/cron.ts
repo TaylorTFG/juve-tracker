@@ -1,4 +1,4 @@
-import { env } from "@/lib/env";
+﻿import { env } from "@/lib/env";
 import { getSupabaseAdmin } from "@/lib/supabase";
 import type { MatchRow } from "@/types/domain";
 
@@ -21,3 +21,4 @@ export async function getPushSubscriptions() {
 export function isTodayInRome(match: MatchRow, todayRome: string): boolean {
   return match.local_date_rome.startsWith(todayRome);
 }
+

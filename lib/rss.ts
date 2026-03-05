@@ -1,4 +1,4 @@
-import Parser from "rss-parser";
+﻿import Parser from "rss-parser";
 import { juveKeywords, rssFeeds } from "@/config/rssFeeds";
 
 type NewsItem = {
@@ -46,3 +46,4 @@ export async function getJuveNews(limit = 30): Promise<NewsItem[]> {
     .sort((a, b) => new Date(b.pubDate ?? 0).getTime() - new Date(a.pubDate ?? 0).getTime())
     .slice(0, limit);
 }
+

@@ -1,4 +1,4 @@
-export type PlayerRow = {
+﻿export type PlayerRow = {
   id: number;
   provider_id: number;
   name: string;
@@ -46,3 +46,4 @@ export type PlayerStats = {
   provider: string;
   note?: string;
 };
+

@@ -1,4 +1,4 @@
-import { getSquadCached } from "@/lib/repository";
+﻿import { getSquadCached } from "@/lib/repository";
 import { PlayerCard } from "@/components/PlayerCard";
 
 export default async function SquadPage() {
@@ -19,3 +19,4 @@ export default async function SquadPage() {
     </div>
   );
 }
+

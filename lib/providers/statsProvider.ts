@@ -1,4 +1,4 @@
-import type { PlayerStats } from "@/types/domain";
+﻿import type { PlayerStats } from "@/types/domain";
 
 export interface StatsProvider {
   getPlayerStats(providerPlayerId: number): Promise<PlayerStats>;
@@ -17,3 +17,4 @@ class FootballDataStatsProvider implements StatsProvider {
 }
 
 export const statsProvider: StatsProvider = new FootballDataStatsProvider();
+

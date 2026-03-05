@@ -1,4 +1,4 @@
-import { z } from "zod";
+﻿import { z } from "zod";
 
 const envSchema = z.object({
   FOOTBALL_DATA_API_KEY: z.string().min(1).default(""),
@@ -16,3 +16,4 @@ const envSchema = z.object({
 });
 
 export const env = envSchema.parse(process.env);
+

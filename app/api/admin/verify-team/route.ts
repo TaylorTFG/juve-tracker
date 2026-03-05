@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+﻿import { NextResponse } from "next/server";
 import { env } from "@/lib/env";
 import { fetchSquad } from "@/lib/footballDataClient";
 
@@ -19,3 +19,4 @@ export async function GET() {
     return NextResponse.json({ ok: false, error: (error as Error).message }, { status: 500 });
   }
 }
+

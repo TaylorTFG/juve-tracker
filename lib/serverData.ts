@@ -1,4 +1,4 @@
-import { dateRangeForHome } from "@/lib/time";
+﻿import { dateRangeForHome } from "@/lib/time";
 import { getMatchesCached, getSquadCached } from "@/lib/repository";
 
 export async function getHomeData() {
@@ -12,3 +12,4 @@ export async function getHomeData() {
 
   return { squad, matches, nextMatch, liveMatches, lastResults };
 }
+

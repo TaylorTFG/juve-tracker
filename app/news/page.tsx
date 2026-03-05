@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { getJuveNews } from "@/lib/rss";
 
 export default async function NewsPage() {
@@ -27,3 +27,4 @@ export default async function NewsPage() {
     </div>
   );
 }
+

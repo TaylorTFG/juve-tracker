@@ -1,4 +1,4 @@
-# Juve Tracker
+﻿# Juve Tracker
 
 Web app Next.js + TypeScript + Tailwind per monitorare Juventus: rosa, partite (live/passate/prossime), notifiche push e news RSS.
 
@@ -85,3 +85,4 @@ Con `USE_MOCK_DATA=true` i dati arrivano da:
 - Logging di status, request-id e headers utili
 - Caching DB via tabella `cache_meta`
 - Refresh intensivo solo in matchday/live
+

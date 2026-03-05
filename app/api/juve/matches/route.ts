@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { getMatchesCached } from "@/lib/repository";
 
 export async function GET(request: NextRequest) {
@@ -16,3 +16,4 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ ok: false, error: (error as Error).message }, { status: 500 });
   }
 }
+

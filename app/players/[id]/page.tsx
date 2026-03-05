@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+﻿import { notFound } from "next/navigation";
 import { getSquadCached } from "@/lib/repository";
 import { statsProvider } from "@/lib/providers/statsProvider";
 
@@ -36,3 +36,4 @@ export default async function PlayerDetailPage({ params }: { params: Promise<{ i
     </div>
   );
 }
+

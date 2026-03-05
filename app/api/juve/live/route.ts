@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+﻿import { NextResponse } from "next/server";
 import { getLiveMatchesCached } from "@/lib/repository";
 
 export async function GET() {
@@ -9,3 +9,4 @@ export async function GET() {
     return NextResponse.json({ ok: false, error: (error as Error).message }, { status: 500 });
   }
 }
+

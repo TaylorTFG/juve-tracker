@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabase";
 
 export async function POST(request: NextRequest) {
@@ -23,3 +23,4 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json({ ok: true });
 }
+

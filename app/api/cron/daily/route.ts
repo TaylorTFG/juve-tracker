@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { addDays, subDays, format } from "date-fns";
 import { assertCronSecret, getPushSubscriptions, isTodayInRome } from "@/lib/cron";
 import { sendPushNotification } from "@/lib/push";
@@ -52,3 +52,4 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, error: (error as Error).message }, { status: 401 });
   }
 }
+

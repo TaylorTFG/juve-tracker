@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+﻿import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { env } from "@/lib/env";
 import { fetchMatches, fetchSquad } from "@/lib/footballDataClient";
@@ -133,3 +133,4 @@ export async function getLiveMatchesCached() {
   const matches = await getMatchesCached(fromStr, toStr, false);
   return matches.filter((m) => ["IN_PLAY", "PAUSED", "LIVE"].includes(m.status));
 }
+

@@ -1,4 +1,4 @@
-import type { MatchRow } from "@/types/domain";
+﻿import type { MatchRow } from "@/types/domain";
 import { formatRomeDisplay } from "@/lib/time";
 
 export function MatchCard({ match }: { match: MatchRow }) {
@@ -15,3 +15,4 @@ export function MatchCard({ match }: { match: MatchRow }) {
     </article>
   );
 }
+

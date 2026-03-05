@@ -1,4 +1,4 @@
-import { env } from "@/lib/env";
+﻿import { env } from "@/lib/env";
 import { fromZonedTime, formatInTimeZone } from "date-fns-tz";
 
 export const TZ = env.TIMEZONE;
@@ -33,3 +33,4 @@ export function dateRangeForHome() {
     to: formatInTimeZone(to, TZ, "yyyy-MM-dd")
   };
 }
+

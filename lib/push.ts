@@ -1,4 +1,4 @@
-import webpush from "web-push";
+﻿import webpush from "web-push";
 import { env } from "@/lib/env";
 
 let configured = false;
@@ -17,3 +17,4 @@ export async function sendPushNotification(subscription: webpush.PushSubscriptio
   ensureWebPushConfigured();
   await webpush.sendNotification(subscription, JSON.stringify(payload));
 }
+

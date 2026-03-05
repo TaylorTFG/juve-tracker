@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import "./globals.css";
 
 export const metadata = {
@@ -28,3 +28,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+

@@ -1,4 +1,4 @@
-self.addEventListener("push", (event) => {
+﻿self.addEventListener("push", (event) => {
   if (!event.data) return;
 
   const payload = event.data.json();
@@ -17,3 +17,4 @@ self.addEventListener("notificationclick", (event) => {
   const target = event.notification.data || "/";
   event.waitUntil(clients.openWindow(target));
 });
+

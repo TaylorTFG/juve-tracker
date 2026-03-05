@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "juve-tracker",
   "version": "1.0.0",
   "private": true,
@@ -33,3 +33,4 @@
     "typescript": "^5.8.2"
   }
 }
+

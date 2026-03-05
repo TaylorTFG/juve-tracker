@@ -1,4 +1,4 @@
-import { NotificationSettings } from "@/components/NotificationSettings";
+﻿import { NotificationSettings } from "@/components/NotificationSettings";
 
 export default function NotificationsPage() {
   return (
@@ -11,3 +11,4 @@ export default function NotificationsPage() {
     </div>
   );
 }
+
