@@ -29,7 +29,7 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
           <ul className="mt-3 space-y-2">
             {detail.goals.map((goal, idx) => (
               <li key={`${goal.team}-${goal.scorer}-${idx}`} className="rounded-xl border border-white/10 bg-white/5 px-3 py-2">
-                <strong>{goal.minute ?? "?"}'</strong> {goal.team} - {goal.scorer}
+                <strong>{goal.minute ?? "?"}&apos;</strong> {goal.team} - {goal.scorer}
                 {goal.type ? ` (${goal.type})` : ""}
                 {goal.score ? ` | ${goal.score}` : ""}
               </li>
@@ -46,7 +46,7 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
           <ul className="mt-3 space-y-2">
             {detail.bookings.map((booking, idx) => (
               <li key={`${booking.team}-${booking.player}-${idx}`} className="rounded-xl border border-white/10 bg-white/5 px-3 py-2">
-                <strong>{booking.minute ?? "?"}'</strong> {booking.team} - {booking.player}
+                <strong>{booking.minute ?? "?"}&apos;</strong> {booking.team} - {booking.player}
                 {booking.card ? ` (${booking.card})` : ""}
               </li>
             ))}
