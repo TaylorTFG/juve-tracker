@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "provider_id": 100,
+    "name": "Dusan Vlahovic",
+    "position": "Centre-Forward",
+    "nationality": "Serbia",
+    "date_of_birth": "2000-01-28",
+    "shirt_number": 9,
+    "contract_until": "2026-06-30",
+    "market_value": null,
+    "updated_at": "2026-03-05T08:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "provider_id": 101,
+    "name": "Federico Chiesa",
+    "position": "Right Winger",
+    "nationality": "Italy",
+    "date_of_birth": "1997-10-25",
+    "shirt_number": 7,
+    "contract_until": "2026-06-30",
+    "market_value": null,
+    "updated_at": "2026-03-05T08:00:00.000Z"
+  }
+]

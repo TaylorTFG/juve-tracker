@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "provider_id": 9001,
+    "utc_date": "2026-03-01T19:45:00Z",
+    "local_date_rome": "2026-03-01T20:45:00+01:00",
+    "competition": "Serie A",
+    "home_team": "Juventus",
+    "away_team": "Atalanta",
+    "home_score": 2,
+    "away_score": 1,
+    "status": "FINISHED",
+    "updated_at": "2026-03-05T08:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "provider_id": 9002,
+    "utc_date": "2026-03-08T19:45:00Z",
+    "local_date_rome": "2026-03-08T20:45:00+01:00",
+    "competition": "Serie A",
+    "home_team": "Milan",
+    "away_team": "Juventus",
+    "home_score": null,
+    "away_score": null,
+    "status": "SCHEDULED",
+    "updated_at": "2026-03-05T08:00:00.000Z"
+  }
+]
